@@ -19,6 +19,24 @@ namespace Qiz
         }
         string conexaoString = "server=localhost;user=root;password=;database=quiz;";
 
+        public void CadastrarAlternativas(String alternativa, long ID)
+        {
+            using (MySqlConnection conexao = new MySqlConnection(conexaoString))
+            {
+                conexao.Open();
+                string insert_alternativa = "INNSERT INTO Alternativa(perguntas,Alternativa,Alternativa2,Alternativa3,Alternativa4) VALUE (@Alternativas)";
+
+                using (MySqlCommand comando = new MySqlCommand(insert_alternativa, conexao))
+                {
+                    comando.Parameters.AddWithValue("@Alternativa", alternativa);
+                    comando.Parameters.AddWithValue("Alternativa2",ID);
+
+                    comando.ExecuteNonQuery();
+                }
+
+            }
+        }
+
         private void btncadastrar_Click(object sender, EventArgs e)
         {
             string pergunta = " ";
@@ -37,14 +55,15 @@ namespace Qiz
             using (MySqlConnection conexao = new MySqlConnection(conexaoString))
             {
                 conexao.Open();
-               string scripInsert = "INSERT INTO perguntas(pergunta,Alternativa) VALUE (@questao,@alternativa)";
+                string scripInsert = "INSERT INTO perguntas(pergunta,Alternativa) VALUE (@questao,@alternativas)";
 
 
                 using (MySqlCommand comando = new MySqlCommand(scripInsert, conexao))
                 {
                     //substitui os parametros para os valores reais.
                     comando.Parameters.AddWithValue("@questao", pergunta);
-                    comando.Parameters.AddWithValue("@questao", alternativaA);
+                   
+
 
                     comando.ExecuteNonQuery();
 
@@ -55,7 +74,10 @@ namespace Qiz
                 }
 
             }
-
+            CadastrarAlternativas(alternativaA, ultimoID);
+            CadastrarAlternativas(alternativaB, ultimoID);
+            CadastrarAlternativas(alternativaC, ultimoID);
+            CadastrarAlternativas(alternativaD, ultimoID);
 
             MessageBox.Show("Pergunta Cadastrada com Sucesso!!");
 
