@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Qiz", "Qiz\Qiz.csproj", "{FECB8C4C-186E-4171-818A-5BFCD4C67895}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cadastro", "cadastro\cadastro.csproj", "{FECB8C4C-186E-4171-818A-5BFCD4C67895}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
